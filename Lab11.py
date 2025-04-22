@@ -75,7 +75,7 @@ def get_assignment_average(assignment_id):
                 if grade > grade_bank[0]:
                     grade_bank[0] = grade
     grade_bank[2] /= count
-    return f"Min: {grade_bank[1]}%\nAvg: {(grade_bank[2])}%\nMax: {round(grade_bank[0])}%"
+    return f"Min: {grade_bank[1]}%\nAvg: {round(grade_bank[2])}%\nMax: {grade_bank[0]}%"
 
 def get_assignment_scores(assignment_id):
     grades = []
