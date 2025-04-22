@@ -114,5 +114,5 @@ while True:
             plt.show()
         else:
             print('Assignment not found')
-    print('\n')
+    break
 
