@@ -1,5 +1,6 @@
 import os
 import matplotlib.pyplot as plt
+import math
 
 base_dir = os.path.dirname(__file__)
 file_path_students = os.path.join(base_dir, 'data', 'students.txt')
@@ -75,7 +76,7 @@ def get_assignment_average(assignment_id):
                 if grade > grade_bank[0]:
                     grade_bank[0] = grade
     grade_bank[2] /= count
-    return f"Min: {grade_bank[1]}%\nAvg: {round(grade_bank[2])}%\nMax: {grade_bank[0]}%"
+    return f"Min: {grade_bank[1]}%\nAvg: {math.floor(grade_bank[2])}%\nMax: {grade_bank[0]}%"
 
 def get_assignment_scores(assignment_id):
     grades = []
