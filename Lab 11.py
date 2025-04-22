@@ -1,8 +1,13 @@
 import os
 import matplotlib.pyplot as plt
 
+base_dir = os.path.dirname(__file__)
+file_path_students = os.path.join(base_dir, 'data', 'students.txt')
+file_path_assignments = os.path.join(base_dir, 'data', 'assignments.txt')
+file_path_submissions = os.path.join(base_dir, 'data', 'submissions')
+
 def get_id(name):
-    with open(r'\data\students.txt') as f:
+    with open(file_path_students) as f:
         lines = f.read().splitlines()
     for line in lines:
         if line[3:] == name:
@@ -10,7 +15,7 @@ def get_id(name):
     return False
 
 def get_assignment_id(name):
-    with open(r'\data\assignments.txt') as f:
+    with open(file_path_assignments) as f:
         lines = f.read().splitlines()
         count, assignment_id = 0, ''
         for line in lines:
@@ -25,7 +30,7 @@ def get_assignment_id(name):
             count += 1
     return False
 
-with open(r'lab-11-\data\assignments.txt') as f:
+with open(file_path_assignments) as f:
     lines = f.read().splitlines()
     count, assignment, weight = 0,0,0
     assignment_list = []
@@ -48,7 +53,7 @@ def get_weight(assignment_id):
 
 def get_average(id):
     grade = 0
-    for file in os.scandir(r'\data\submissions'):
+    for file in os.scandir(file_path_submissions):
         with open(file) as f:
             line = f.readline()
             if int(line[:3]) == int(id):
@@ -58,7 +63,7 @@ def get_average(id):
 def get_assignment_average(assignment_id):
     grade_bank = [0,100, 0] #highest, lowest, average
     count = 0
-    for file in os.scandir(r'\data\submissions'):
+    for file in os.scandir(file_path_submissions):
         with open(file) as f:
             line = f.readline()
             if (int(line[4:line[4:].index('|')+4]) == int(assignment_id)):
@@ -74,7 +79,7 @@ def get_assignment_average(assignment_id):
 
 def get_assignment_scores(assignment_id):
     grades = []
-    for file in os.scandir(r'\data\submissions'):
+    for file in os.scandir(file_path_submissions):
         with open(file) as f:
             line = f.readline()
             if (int(line[4:line[4:].index('|')+4]) == int(assignment_id)):
